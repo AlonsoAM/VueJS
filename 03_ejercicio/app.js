@@ -1,9 +1,9 @@
 // Variables Globales
 
-const formularioUI = document.querySelector("#formulario");
-const listaActividadesUI = document.querySelector("#listaActividaes");
+const formularioUI = document.querySelector("#formulario")
+const listaActividadesUI = document.querySelector("#listaActividaes")
 
-let arrayActividades = [];
+let arrayActividades = []
 
 // Funciones
 
@@ -13,24 +13,24 @@ const CrearItem = (actividad) => {
         estado: false,
     };
 
-    arrayActividades.push(item);
+    arrayActividades.push(item)
 
-    return item;
+    return item
 };
 
 const GuardarDB = () => {
     // Guardar en el localStorage
-    localStorage.setItem("rutina", JSON.stringify(arrayActividades));
-    PintarDB();
+    localStorage.setItem("rutina", JSON.stringify(arrayActividades))
+    PintarDB()
 };
 
 const PintarDB = () => {
-    listaActividadesUI.innerHTML = "";
+    listaActividadesUI.innerHTML = ""
 
-    arrayActividades = JSON.parse(localStorage.getItem("rutina"));
+    arrayActividades = JSON.parse(localStorage.getItem("rutina"))
 
     if (arrayActividades === null) {
-        arrayActividades = [];
+        arrayActividades = []
     } else {
         arrayActividades.forEach((element) => {
             listaActividadesUI.innerHTML += `
@@ -51,22 +51,22 @@ const PintarDB = () => {
         </div>
 
       `;
-        });
+        })
     }
-    //console.log(arrayActividades);
+    console.log(arrayActividades);
 };
 
 // EventListener
 
 formularioUI.addEventListener("submit", (e) => {
     e.preventDefault();
-    let actividadUI = document.querySelector("#actividad").value;
+    let actividadUI = document.querySelector("#actividad").value
     //console.log(actividadUI)
 
-    CrearItem(actividadUI);
-    GuardarDB();
+    CrearItem(actividadUI)
+    GuardarDB()
 
-    formularioUI.reset();
+    formularioUI.reset()
 });
 
 document.addEventListener("DOMContentLoaded", PintarDB);
