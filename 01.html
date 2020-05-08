@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hola Mundo con Vue.js</title>
+</head>
+<body>
+
+   <div id="app">
+       <!--La sintaxix para conectar con los elementos de la data del archivo js se utiliza {{}} -->
+      <h1>{{titulo}}</h1>
+
+      <!--El v-model = "contenido" permite que lo que escriba dentro del input viaje y se almacene en la data de mi objeto data en JS.-->
+      <input type="text" placeholder="Nombre" v-model = "estudiante">
+      <br>
+      <input type="text" placeholder="Calificación" v-model = "nota">
+      <br>
+
+      <!--Eventos
+          Con v-on:click = "methodo" -- accedemos al metodo que declaramos dentro de methods en la app de vue en el archivo js.
+          Tambien existe la forma abreviada es anteponer el @click = "methodo" -- tambien accede al metodo declarado en los methods de js, solo que es más abreviadp
+      -->
+      <button @click = "agregaEstudiante">Agregar</button>
+
+      <ul>
+          <li v-for="e of estudiantes">
+              Nombre: {{e.nombre}} - Calificación: {{e.nota}} -
+              <span v-if="e.nota > 10"> Estado: Aprobado
+              </span><span v-else> Estado: Desaprobado</span>
+          </li>
+      </ul>
+
+
+
+   </div>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="01.js"></script>
+
+</body>
+</html>
